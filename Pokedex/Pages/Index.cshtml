@@ -1,0 +1,43 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Pokedex</h1>
+
+<form method="get">
+    <input type="text" name="search" value="@Model.Search" placeholder="Search Pokémon..." />
+    <button type="submit">Search</button>
+</form>
+
+<div class="pokemon-list">
+    @foreach (var pokemon in Model.PokemonList)
+    {
+        <div class="pokemon-card">
+            <img src="@pokemon.ImageUrl" alt="@pokemon.Name" width="96" height="96" />
+            <h2>@pokemon.Name</h2>
+            <p>@pokemon.Type</p>
+            <a href="/Details?id=@pokemon.Id">Details</a>
+        </div>
+    }
+</div>
+
+<style>
+.pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.pokemon-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 180px;
+    text-align: center;
+    background: #f8f8f8;
+}
+.pokemon-card img {
+    margin-bottom: 0.5rem;
+}
+</style>

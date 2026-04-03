@@ -1,0 +1,35 @@
+@page
+@model DetailsModel
+@{
+    ViewData["Title"] = "Pokémon Details";
+}
+
+@if (Model.Pokemon == null)
+{
+    <h2>Pokémon not found.</h2>
+}
+else
+{
+    <div class="pokemon-details">
+        <img src="@Model.Pokemon.ImageUrl" alt="@Model.Pokemon.Name" width="120" height="120" />
+        <h1>@Model.Pokemon.Name</h1>
+        <p><strong>Type:</strong> @Model.Pokemon.Type</p>
+        <p>@Model.Pokemon.Description</p>
+        <a href="/">Back to list</a>
+    </div>
+}
+
+<style>
+.pokemon-details {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    text-align: center;
+}
+.pokemon-details img {
+    margin-bottom: 1rem;
+}
+</style>
